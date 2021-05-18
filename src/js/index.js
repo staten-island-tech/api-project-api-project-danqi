@@ -9,7 +9,8 @@ const query = async function () {
       `https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=${key}`
     );
     const data = await response.json();
-    data.results.forEach((book) => {
+    console.log(data);
+    data.forEach((book) => {
       DOMSelectors.grid.insertAdjacentHTML(
         "beforeend",
         `<div class="book-card">
