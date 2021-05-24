@@ -9,16 +9,17 @@ const query = async function () {
       `https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=${key}`
     );
     const data = await response.json();
-    console.log(data);
-    data.forEach((book) => {
+    console.log(data.results.books);
+    const books = data.results.books;
+    books.forEach((book) => {
       DOMSelectors.grid.insertAdjacentHTML(
         "beforeend",
         `<div class="book-card">
         <div class="book-card-front">
           <img
-            src="https://image.tmdb.org/t/p/w300/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg"
+            src= ${book.book_image}
             alt=""
-            class="poster"
+            class="cover"
           />
         </div>
         <div class="book-card-back">
