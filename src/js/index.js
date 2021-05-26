@@ -3,13 +3,25 @@ import { DOMSelectors } from "./DOM";
 
 const key = "u8BKHxa00AgeWIPATsMKvkhaqugW80M2";
 
-const categoryFiction = document.getElementById("category-fiction");
-const categoryManga = document.getElementById("category-manga");
+const buttonFiction = document.getElementById("btn-fiction");
+const buttonManga = document.getElementById("btn-manga");
 
-//categoryFiction.addEventListener("click", fetchFiction);
-//categoryManga.addEventListener("click", fetchManga);
+const rankingsFiction = document.getElementById("section-fiction");
+const rankingsManga = document.getElementById("section-manga");
 
-const query = async function () {
+buttonFiction.addEventListener("click", showFiction);
+buttonManga.addEventListener("click", showManga);
+
+function showFiction() {
+  rankingsFiction.classList.remove("hide");
+  rankingsManga.classList.add("hide");
+}
+function showManga() {
+  rankingsManga.classList.remove("hide");
+  rankingsFiction.classList.add("hide");
+}
+
+const sectionFiction = async function () {
   try {
     const response = await fetch(
       `https://api.nytimes.com/svc/books/v3/lists/combined-print-and-e-book-fiction.json?api-key=${key}`
@@ -17,7 +29,7 @@ const query = async function () {
     const data = await response.json();
     const books = data.results.books;
     books.forEach((book) => {
-      DOMSelectors.grid.insertAdjacentHTML(
+      DOMSelectors.sectionFiction.insertAdjacentHTML(
         "beforeend",
         `<div class="book-card">
         <div class="book-card-front">
@@ -47,9 +59,9 @@ const query = async function () {
     alert("There's something wrong.");
   }
 };
-query();
+sectionFiction();
 
-/*const query = async function () {
+const sectionManga = async function () {
   try {
     const response = await fetch(
       `https://api.nytimes.com/svc/books/v3/lists/manga.json?api-key=${key}`
@@ -58,7 +70,7 @@ query();
     //console.log(data.results.books);
     const books = data.results.books;
     books.forEach((book) => {
-      DOMSelectors.grid.insertAdjacentHTML(
+      DOMSelectors.sectionManga.insertAdjacentHTML(
         "beforeend",
         `<div class="book-card">
         <div class="book-card-front">
@@ -88,4 +100,8 @@ query();
     alert("There's something wrong.");
   }
 };
-query();*/
+sectionManga();
+
+/*function showFiction() {
+      visibility.classList.remove("hide");
+    }*/

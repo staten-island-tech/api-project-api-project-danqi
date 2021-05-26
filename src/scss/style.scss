@@ -122,7 +122,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
-.category {
+.btn {
   color: white;
   background-color: #111;
   border: none;
@@ -130,8 +130,20 @@ body {
   font-family: $font-second;
   font-weight: bold;
 }
-.category:focus {
+.btn:focus {
   color: red;
+}
+
+.section-fiction,
+.section-manga {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 90vw;
+  background-color: white;
+  margin: 1rem auto;
+  padding: 3rem auto;
+  align-items: center;
 }
 
 .hide {
