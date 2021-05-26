@@ -4,7 +4,7 @@ import { DOMSelectors } from "./DOM";
 const key = "u8BKHxa00AgeWIPATsMKvkhaqugW80M2";
 
 const buttonFiction = document.getElementById("btn-fiction");
-const buttonNonFiction = document.getElementById("btn-fiction");
+const buttonNonFiction = document.getElementById("btn-nonfiction");
 const buttonYoungAdult = document.getElementById("btn-ya");
 const buttonChildren = document.getElementById("btn-children");
 const buttonManga = document.getElementById("btn-manga");
@@ -23,23 +23,38 @@ buttonManga.addEventListener("click", showManga);
 
 function showFiction() {
   rankingsFiction.classList.remove("hide");
+  rankingsNonfiction.classList.add("hide");
+  rankingsYoungAdult.classList.add("hide");
+  rankingsChildren.classList.add("hide");
   rankingsManga.classList.add("hide");
 }
 function showNonfiction() {
   rankingsNonfiction.classList.remove("hide");
+  rankingsFiction.classList.add("hide");
+  rankingsYoungAdult.classList.add("hide");
+  rankingsChildren.classList.add("hide");
   rankingsManga.classList.add("hide");
 }
 function showYoungAdult() {
   rankingsYoungAdult.classList.remove("hide");
+  rankingsFiction.classList.add("hide");
+  rankingsNonfiction.classList.add("hide");
+  rankingsChildren.classList.add("hide");
   rankingsManga.classList.add("hide");
 }
 function showChildren() {
   rankingsChildren.classList.remove("hide");
+  rankingsFiction.classList.add("hide");
+  rankingsNonfiction.classList.add("hide");
+  rankingsYoungAdult.classList.add("hide");
   rankingsManga.classList.add("hide");
 }
 function showManga() {
   rankingsManga.classList.remove("hide");
   rankingsFiction.classList.add("hide");
+  rankingsNonfiction.classList.add("hide");
+  rankingsYoungAdult.classList.add("hide");
+  rankingsChildren.classList.add("hide");
 }
 
 const sectionFiction = async function () {
@@ -83,10 +98,10 @@ sectionFiction();
 
 const sectionNonfiction = async function () {
   try {
-    const response = await fetch();
-    `https://api.nytimes.com/svc/books/v3/lists/combined-print-and-e-book-nonfiction.json?api-key=${key}`;
+    const response = await fetch(
+      `https://api.nytimes.com/svc/books/v3/lists/combined-print-and-e-book-nonfiction.json?api-key=${key}`
+    );
     const data = await response.json();
-    //console.log(data.results.books);
     const books = data.results.books;
     books.forEach((book) => {
       DOMSelectors.sectionNonfiction.insertAdjacentHTML(
@@ -122,10 +137,10 @@ sectionNonfiction();
 
 const sectionYoungAdult = async function () {
   try {
-    const response = await fetch();
-    `https://api.nytimes.com/svc/books/v3/lists/young-adult.json?api-key=${key}`;
+    const response = await fetch(
+      `https://api.nytimes.com/svc/books/v3/lists/young-adult.json?api-key=${key}`
+    );
     const data = await response.json();
-    //console.log(data.results.books);
     const books = data.results.books;
     books.forEach((book) => {
       DOMSelectors.sectionYoungAdult.insertAdjacentHTML(
@@ -154,17 +169,17 @@ const sectionYoungAdult = async function () {
     });
   } catch (error) {
     console.log(error);
-    alert("There's something wrong with the yound adult section.");
+    alert("There's something wrong with the young adult section.");
   }
 };
 sectionYoungAdult();
 
 const sectionChildren = async function () {
   try {
-    const response = await fetch();
-    `https://api.nytimes.com/svc/books/v3/lists/picture-books.json?api-key=${key}`;
+    const response = await fetch(
+      `https://api.nytimes.com/svc/books/v3/lists/picture-books.json?api-key=${key}`
+    );
     const data = await response.json();
-    //console.log(data.results.books);
     const books = data.results.books;
     books.forEach((book) => {
       DOMSelectors.sectionChildren.insertAdjacentHTML(
