@@ -6,31 +6,33 @@ body {
   padding: 0;
   margin: 0;
   font-size: 62.5%;
-  color: white;
+  color: rgb(11, 7, 231);
   font-family: $font-second;
   font-weight: 500;
 }
 body {
-  background-color: #111;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(#a8ff78, 0.5),
+    rgba(#47fac4, 0.5)
+  );
 }
 
 .header {
-  font-size: 5.2rem;
-
+  font-size: 6rem;
   margin: 3rem auto;
   text-align: center;
 }
 .top-rated {
   margin: 1rem auto 2rem auto;
   text-align: center;
-  font-size: 3.8rem;
+  font-size: 5rem;
 }
 .book-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   width: 90vw;
-  background-color: white;
   margin: 1rem auto;
   padding: 3rem auto;
   align-items: center;
@@ -41,6 +43,7 @@ body {
   margin: 0 auto;
   position: relative;
   margin: 2rem auto;
+  border: rgb(0, 174, 255) solid 1rem;
 }
 .book-card-front {
   position: absolute;
@@ -69,7 +72,7 @@ body {
   justify-content: space-around;
   align-items: center;
   color: white;
-  background-color: rgba(33, 33, 33, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   width: 100%;
   height: 100%;
 }
@@ -77,10 +80,11 @@ body {
   font-size: 2.4rem;
   text-transform: uppercase;
   margin: 1rem auto;
+  padding: 0.5rem;
 
   text-align: center;
 }
-.rank-box,
+.description-box,
 .author-box {
   text-align: center;
 }
@@ -97,8 +101,9 @@ body {
 .book-genre {
   list-style: none;
 }
-.user-rank {
+.description {
   font-size: 2rem;
+  padding: 0.5rem;
 }
 .author-book {
   font-size: 2rem;
@@ -111,10 +116,6 @@ body {
   z-index: 3;
   display: flex;
 }
-.test {
-  color: black;
-  font-size: 3rem;
-}
 
 .genres {
   margin: 3rem 5rem;
@@ -123,15 +124,18 @@ body {
   justify-content: space-between;
 }
 .btn {
-  color: white;
-  background-color: #111;
+  background-color: #d0f5ff;
+  color: rgb(11, 7, 231);
   border: none;
-  font-size: 3rem;
+  border-radius: 1rem;
+  box-shadow: rgb(0, 223, 223) 0 0 0 0.5rem;
+  font-size: 3.5rem;
+  padding: 1rem;
   font-family: $font-second;
   font-weight: bold;
 }
 .btn:focus {
-  color: red;
+  box-shadow: rgb(0, 174, 255) 0 0 0 0.5rem;
 }
 
 .section-fiction,
@@ -143,7 +147,6 @@ body {
   flex-wrap: wrap;
   justify-content: space-around;
   width: 90vw;
-  background-color: white;
   margin: 1rem auto;
   padding: 3rem auto;
   align-items: center;
